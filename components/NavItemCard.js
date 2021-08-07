@@ -1,11 +1,17 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 
 const NavItemCard = ({ data }) => {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity style={tw`px-4 py-6 bg-gray-200 m-2 w-40`}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate(data.screen)}
+      style={tw`px-4 py-6 bg-gray-200 m-2 w-40`}
+    >
       <View>
         <Image source={{ uri: data.image }} style={styles.image} />
         <Text style={tw`mt-2 text-lg font-semibold`}>{data.title}</Text>
